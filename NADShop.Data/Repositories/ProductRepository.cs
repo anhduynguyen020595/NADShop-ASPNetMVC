@@ -2,8 +2,8 @@
 using NADShop.Model.Models;
 
 namespace NADShop.Data.Repositories
-{
-    public interface IProductRepository
+{ 
+    public interface IProductRepository : IRepository<Product>
     {
     }
 
