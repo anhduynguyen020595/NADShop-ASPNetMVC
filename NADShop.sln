@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NADShop.UnitTest", "NADShop
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NADShop.Web", "NADShop.Web\NADShop.Web.csproj", "{63967C9F-29B5-42C9-8EA6-1768958DC1C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NADShop.WebAPI", "NADShop.WebAPI\NADShop.WebAPI.csproj", "{C6E56B9A-782E-4F6F-BAF4-9BF13831532E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{63967C9F-29B5-42C9-8EA6-1768958DC1C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63967C9F-29B5-42C9-8EA6-1768958DC1C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63967C9F-29B5-42C9-8EA6-1768958DC1C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C6E56B9A-782E-4F6F-BAF4-9BF13831532E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6E56B9A-782E-4F6F-BAF4-9BF13831532E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6E56B9A-782E-4F6F-BAF4-9BF13831532E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6E56B9A-782E-4F6F-BAF4-9BF13831532E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
