@@ -25,17 +25,10 @@ namespace NADShop.Web.Api
         {
             return CreateHttpRespone(requestMessage, () =>
             {
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    requestMessage.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listCategory = _postCategoryService.GetAll();
+                var listCategory = _postCategoryService.GetAll();
 
-                    response = requestMessage.CreateResponse(HttpStatusCode.OK, listCategory);
-                }
+                HttpResponseMessage response = requestMessage.CreateResponse(HttpStatusCode.OK, listCategory);
+
                 return response;
             });
         }
