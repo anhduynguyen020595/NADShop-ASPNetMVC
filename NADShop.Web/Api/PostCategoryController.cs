@@ -1,6 +1,9 @@
-﻿using NADShop.Model.Models;
+﻿using AutoMapper;
+using NADShop.Model.Models;
 using NADShop.Service;
 using NADShop.Web.Infrastructure.Core;
+using NADShop.Web.Infrastructure.Extensions;
+using NADShop.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,13 +30,16 @@ namespace NADShop.Web.Api
             {
                 var listCategory = _postCategoryService.GetAll();
 
-                HttpResponseMessage response = requestMessage.CreateResponse(HttpStatusCode.OK, listCategory);
+                var listPostCategoryViewModel = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+
+                HttpResponseMessage response = requestMessage.CreateResponse(HttpStatusCode.OK, listPostCategoryViewModel);
 
                 return response;
             });
         }
 
-        public HttpResponseMessage Post(HttpRequestMessage requestMessage, PostCategory postCategory)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage requestMessage, PostCategoryViewModel postCategoryViewModel)
         {
             return CreateHttpRespone(requestMessage, () =>
             {
@@ -44,6 +50,9 @@ namespace NADShop.Web.Api
                 }
                 else
                 {
+                    PostCategory postCategory = new PostCategory();
+                    postCategory.UpdatePostCategory(postCategoryViewModel);
+
                     var category = _postCategoryService.Add(postCategory);
                     _postCategoryService.Save();
 
@@ -53,7 +62,8 @@ namespace NADShop.Web.Api
             });
         }
 
-        public HttpResponseMessage Put(HttpRequestMessage requestMessage, PostCategory postCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage requestMessage, PostCategoryViewModel postCategoryViewModel)
         {
             return CreateHttpRespone(requestMessage, () =>
             {
@@ -64,7 +74,10 @@ namespace NADShop.Web.Api
                 }
                 else
                 {
-                    _postCategoryService.Update(postCategory);
+                    var postCategoryDb = _postCategoryService.GetById(postCategoryViewModel.ID);
+                    postCategoryDb.UpdatePostCategory(postCategoryViewModel);
+
+                    _postCategoryService.Update(postCategoryDb);
                     _postCategoryService.Save();
 
                     response = requestMessage.CreateResponse(HttpStatusCode.OK);
