@@ -1,9 +1,10 @@
 ﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using NADShop.Model.Models;
 
 namespace NADShop.Data
 {
-    public class NADShopDbContext : DbContext
+    public class NADShopDbContext : IdentityDbContext<ApplicationUser>
     {
         public NADShopDbContext() : base("NADShopConnection")
         {
@@ -29,10 +30,15 @@ namespace NADShop.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
 
+        public static NADShopDbContext Create()
+        {
+            return new NADShopDbContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-
+            builder.Entity<IdentityUserRole>().HasKey(i => i.UserId);
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
     }
 }
