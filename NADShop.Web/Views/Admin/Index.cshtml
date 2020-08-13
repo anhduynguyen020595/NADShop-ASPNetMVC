@@ -7,5 +7,15 @@
     <div ng-controller="myController">
         {{message}}
     </div>
+
+    <div ng-controller="schoolController">
+        <div ng-controller="teacherController">
+            Teacher: {{message}}
+        </div>
+        <div ng-controller="studentController">
+            Student: {{message}}
+        </div>
+        School: {{message}}
+    </div>
 </div>
 <script src="~/Scripts/spa/app.js"></script>
