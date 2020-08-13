@@ -4,26 +4,32 @@
 var myApp = angular.module('myModule', []);
 
 // Creating the controller and registering with the module all done in one line
-myApp.controller("myController", myController);
 myApp.controller("schoolController", schoolController)
-myApp.controller("studentController", studentController)
-myApp.controller("teacherController", teacherController)
+myApp.service("Validator", Validator);
 
-myController.$inject = ['$scope'];
+schoolController.$inject = ['$scope', 'Validator'];
 
-function myController($scope) {
-    $scope.message = "Hello World";
+function schoolController($scope, Validator) {   
+
+    $scope.checkNumber = function () {
+        $scope.message = Validator.checkNumber($scope.num);
+    }
+
+    $scope.num = 1;
 }
 
-// Scope nested
-function schoolController($scope) {
-    $scope.message = "School";
-}
 
-function studentController($scope) {
-    $scope.message = "Student";
-}
-
-function teacherController($scope) {
-    $scope.message = "Teacher";
+function Validator($window) {
+    return {
+        checkNumber: checkNumber
+    }
+    function checkNumber(input) {
+        if (input % 2 == 0) {
+            //$window.alert("This is even");
+            return "This is even";
+        } else {
+            //$window.alert("This is odd");
+            return "This is odd";
+        }
+    }
 }

@@ -4,18 +4,15 @@
 }
 
 <div ng-app="myModule">
-    <div ng-controller="myController">
-        {{message}}
-    </div>
-
     <div ng-controller="schoolController">
-        <div ng-controller="teacherController">
-            Teacher: {{message}}
-        </div>
-        <div ng-controller="studentController">
-            Student: {{message}}
-        </div>
-        School: {{message}}
+        <input type="number" ng-model="num"/>
+
+        Value of text box {{num}}
+
+        <button ng-click="checkNumber()">Check number</button>
+
+        <br />
+        {{message}}
     </div>
 </div>
 <script src="~/Scripts/spa/app.js"></script>
