@@ -976,6 +976,7 @@
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\sitemap.xml" />
     <Content Include="Scripts\spa\app.js" />
+    <Content Include="Scripts\spa\nadShopDirective.html" />
     <Content Include="Scripts\test-bundles\angular-aria.js" />
     <Content Include="Scripts\test-bundles\angular-cookies.js" />
     <Content Include="Scripts\test-bundles\angular-message-format.js" />

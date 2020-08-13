@@ -4,22 +4,25 @@
 var myApp = angular.module('myModule', []);
 
 // Creating the controller and registering with the module all done in one line
-myApp.controller("schoolController", schoolController)
-myApp.service("Validator", Validator);
+myApp.controller("schoolController", schoolController); 
 
-schoolController.$inject = ['$scope', 'Validator'];
+myApp.directive("nadShopDirective", nadShopDirective);
 
-function schoolController($scope, Validator) {   
+myApp.service("ValidatorService", ValidatorService);
+
+schoolController.$inject = ['$scope', 'ValidatorService'];
+
+function schoolController($scope, ValidatorService) {   
 
     $scope.checkNumber = function () {
-        $scope.message = Validator.checkNumber($scope.num);
+        $scope.message = ValidatorService.checkNumber($scope.num);
     }
 
     $scope.num = 1;
 }
 
 
-function Validator($window) {
+function ValidatorService($window) {
     return {
         checkNumber: checkNumber
     }
@@ -31,5 +34,13 @@ function Validator($window) {
             //$window.alert("This is odd");
             return "This is odd";
         }
+    }
+}
+
+function nadShopDirective() {
+    return {
+        //template: "<h1>This is the first Directive</h1>"
+        restrict: "A",
+        templateUrl: "/Scripts/spa/nadShopDirective.html"
     }
 }
